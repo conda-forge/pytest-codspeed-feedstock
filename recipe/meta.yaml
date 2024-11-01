@@ -37,9 +37,10 @@ test:
     - pip
 
 about:
-  home: https://github.com/CodSpeedHQ/pytest-codspeed
+  home: https://codspeed.io/
   summary: Pytest plugin to create CodSpeed benchmarks
   dev_url: https://github.com/CodSpeedHQ/pytest-codspeed
+  doc_url: https://docs.codspeed.io/
   license: MIT
   license_file: LICENSE
 
