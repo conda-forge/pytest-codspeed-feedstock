@@ -3,13 +3,15 @@ About pytest-codspeed-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/pytest-codspeed-feedstock/blob/main/LICENSE.txt)
 
-Home: https://github.com/CodSpeedHQ/pytest-codspeed
+Home: https://codspeed.io/
 
 Package license: MIT
 
 Summary: Pytest plugin to create CodSpeed benchmarks
 
 Development: https://github.com/CodSpeedHQ/pytest-codspeed
+
+Documentation: https://docs.codspeed.io/
 
 Current build status
 ====================
@@ -145,5 +147,6 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
+* [@kenodegard](https://github.com/kenodegard/)
 * [@xhochy](https://github.com/xhochy/)
 
