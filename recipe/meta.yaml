@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest_codspeed-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest_codspeed-{{ version }}.tar.gz
   sha256: c5b80100ea32dd44079bb2db298288763eb8fe859eafa1650a8711bd2c32fd06
 
 build:
@@ -22,11 +22,11 @@ requirements:
   run:
     - python >=3.9
     - cffi >=1.17.1
-    - setuptools  # [py >= 312]
+    - setuptools
     - pytest >=3.8
     - filelock >=3.12.2
     - rich >=13.8.1
-    - importlib-metadata >=8.5.0  # [py < 3.10]
+    - importlib-metadata >=8.5.0
 
 test:
   imports:
