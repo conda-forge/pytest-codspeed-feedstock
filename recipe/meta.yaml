@@ -20,11 +20,13 @@ requirements:
     - hatchling
     - pip
   run:
-    - python >=3.7
-    - cffi >=1.15.1
+    - python >=3.9
+    - cffi >=1.17.1
+    - setuptools  # [py >= 312]
     - pytest >=3.8
     - filelock >=3.12.2
-    - setuptools
+    - rich >=13.8.1
+    - importlib-metadata >=8.5.0  # [py < 3.10]
 
 test:
   imports:
