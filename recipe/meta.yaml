@@ -1,13 +1,13 @@
 {% set name = "pytest-codspeed" %}
-{% set version = "2.2.1" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pytest_codspeed-{{ version }}.tar.gz
-  sha256: 0adc24baf01c64a6ca0a0b83b3cd704351708997e09ec086b7776c32227d4e0a
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest_codspeed-{{ version }}.tar.gz
+  sha256: c5b80100ea32dd44079bb2db298288763eb8fe859eafa1650a8711bd2c32fd06
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
@@ -16,15 +16,17 @@ build:
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - hatchling
     - pip
   run:
-    - python >=3.7
-    - cffi >=1.15.1
+    - python >={{ python_min }}
+    - cffi >=1.17.1
+    - setuptools
     - pytest >=3.8
     - filelock >=3.12.2
-    - setuptools
+    - rich >=13.8.1
+    - importlib-metadata >=8.5.0
 
 test:
   imports:
@@ -32,15 +34,18 @@ test:
   commands:
     - pip check
   requires:
+    - python {{ python_min }}
     - pip
 
 about:
-  home: https://github.com/CodSpeedHQ/pytest-codspeed
+  home: https://codspeed.io/
   summary: Pytest plugin to create CodSpeed benchmarks
   dev_url: https://github.com/CodSpeedHQ/pytest-codspeed
+  doc_url: https://docs.codspeed.io/
   license: MIT
   license_file: LICENSE
 
 extra:
   recipe-maintainers:
     - xhochy
+    - kenodegard
