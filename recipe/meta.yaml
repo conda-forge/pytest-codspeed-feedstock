@@ -1,5 +1,5 @@
 {% set name = "pytest-codspeed" %}
-{% set version = "3.0.0" %}
+{% set version = "3.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/pytest_codspeed-{{ version }}.tar.gz
-  sha256: c5b80100ea32dd44079bb2db298288763eb8fe859eafa1650a8711bd2c32fd06
+  sha256: f29641d27b4ded133b1058a4c859e510a2612ad4217ef9a839ba61750abd2f8a
 
 build:
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   noarch: python
-  number: 1
+  number: 0
 
 requirements:
   host:
