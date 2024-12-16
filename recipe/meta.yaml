@@ -35,6 +35,7 @@ requirements:
 test:
   imports:
     - pytest_codspeed
+    - pytest_codspeed.instruments.valgrind._wrapper.dist_callgrind_wrapper
   commands:
     - pip check
   requires:
