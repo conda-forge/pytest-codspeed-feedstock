@@ -18,13 +18,13 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib('c') }}
   host:
-    - python {{ python_min }}
+    - python
     - setuptools >=61
     - pip
     - cffi >=1.17.1
     - valgrind >=3.21
   run:
-    - python >={{ python_min }}
+    - python
     - cffi >=1.17.1
     - setuptools
     - pytest >=3.8
@@ -38,7 +38,6 @@ test:
   commands:
     - pip check
   requires:
-    - python {{ python_min }}
     - pip
 
 about:
