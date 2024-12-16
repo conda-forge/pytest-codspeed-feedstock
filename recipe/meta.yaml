@@ -23,6 +23,7 @@ requirements:
     - setuptools >=61
     - pip
     - cffi >=1.17.1
+    - valgrind >=3.21
   run:
     - python >={{ python_min }}
     - cffi >=1.17.1
