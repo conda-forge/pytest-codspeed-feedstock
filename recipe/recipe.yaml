@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pytest-codspeed
-  version: 3.2.0
+  version: "4.0.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,12 +10,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pytest_codspeed-${{ version }}.tar.gz
-  sha256: f9d1b1a3b2c69cdc0490a1e8b1ced44bffbd0e8e21d81a7160cfdd923f6e8155
+  sha256: 0e9af08ca93ad897b376771db92693a81aa8990eecc2a778740412e00a6f6eaf
 
 build:
   number: 0
   skip: not linux
-  script: ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  script:
+    - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
+    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
@@ -39,7 +41,7 @@ tests:
   - python:
       imports:
         - pytest_codspeed
-        - pytest_codspeed.instruments.valgrind._wrapper.dist_callgrind_wrapper
+        - pytest_codspeed.instruments.hooks.dist_instrument_hooks
   - requirements:
       run:
         - pip
