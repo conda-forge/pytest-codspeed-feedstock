@@ -41,7 +41,7 @@ tests:
   - python:
       imports:
         - pytest_codspeed
-        - pytest_codspeed.instruments.valgrind._wrapper.dist_callgrind_wrapper
+        - pytest_codspeed.instruments.hooks.dist_instrument_hooks
   - requirements:
       run:
         - pip
