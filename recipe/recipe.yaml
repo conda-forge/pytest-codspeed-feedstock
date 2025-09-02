@@ -13,7 +13,7 @@ source:
   sha256: 0e9af08ca93ad897b376771db92693a81aa8990eecc2a778740412e00a6f6eaf
 
 build:
-  number: 0
+  number: 1
   skip: not linux
   script:
     - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
