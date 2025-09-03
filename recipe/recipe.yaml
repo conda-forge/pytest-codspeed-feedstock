@@ -3,6 +3,9 @@ schema_version: 1
 context:
   name: pytest-codspeed
   version: "4.0.0"
+  build: 1
+  # build noarch on osx
+  noarch: ${{ osx }}
 
 package:
   name: ${{ name|lower }}
@@ -13,24 +16,46 @@ source:
   sha256: 0e9af08ca93ad897b376771db92693a81aa8990eecc2a778740412e00a6f6eaf
 
 build:
-  number: 0
-  skip: not linux
+  number: 1
+  skip: (not linux and not noarch) or (noarch and not python_min)
   script:
-    - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
+    content:
+    - if: noarch
+      then:
+        - export PYTEST_CODSPEED_SKIP_EXTENSION_BUILD=1
+      else:
+        - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+  python:
+    version_independent: ${{ noarch }}
+  variant:
+    # prefer non-noarch, if available
+    down_prioritize_variant: ${{ 1 if noarch else 0 }}
 
 requirements:
   build:
-    - ${{ compiler('c') }}
-    - ${{ stdlib('c') }}
+    - if: not noarch
+      then:
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
   host:
-    - python
+    - if: noarch
+      then:
+        - python ${{ python_min }}.*
+      else:
+        - python
     - setuptools >=61
     - pip
     - cffi >=1.17.1
-    - valgrind >=3.21
+    - if: not noarch
+      then:
+        - valgrind >=3.21
   run:
-    - python
+    - if: noarch
+      then:
+        - python >=${{ python_min }}
+      else:
+        - python
     - cffi >=1.17.1
     - setuptools
     - pytest >=3.8
@@ -39,14 +64,12 @@ requirements:
 
 tests:
   - python:
+      pip_check: true
       imports:
         - pytest_codspeed
-        - pytest_codspeed.instruments.hooks.dist_instrument_hooks
-  - requirements:
-      run:
-        - pip
-    script:
-      - pip check
+        - if: not noarch
+          then:
+            - pytest_codspeed.instruments.hooks.dist_instrument_hooks
 
 about:
   summary: Pytest plugin to create CodSpeed benchmarks
