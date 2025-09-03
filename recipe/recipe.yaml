@@ -3,7 +3,7 @@ schema_version: 1
 context:
   name: pytest-codspeed
   version: "4.0.0"
-  build: 1
+  build: 2
   # build noarch on osx
   noarch: ${{ osx }}
 
@@ -20,12 +20,12 @@ build:
   skip: (not linux and not noarch) or (noarch and not python_min)
   script:
     content:
-    - if: noarch
-      then:
-        - export PYTEST_CODSPEED_SKIP_EXTENSION_BUILD=1
-      else:
-        - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
-    - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
+      - if: noarch
+        then:
+          - export PYTEST_CODSPEED_SKIP_EXTENSION_BUILD=1
+        else:
+          - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
+      - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   python:
     version_independent: ${{ noarch }}
   variant:
