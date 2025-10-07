@@ -2,8 +2,8 @@ schema_version: 1
 
 context:
   name: pytest-codspeed
-  version: "4.0.0"
-  build: 2
+  version: "4.1.1"
+  build: 0
   # build noarch on osx
   noarch: ${{ osx }}
 
@@ -13,7 +13,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pytest_codspeed-${{ version }}.tar.gz
-  sha256: 0e9af08ca93ad897b376771db92693a81aa8990eecc2a778740412e00a6f6eaf
+  sha256: 9acc3394cc8aafd4543193254831d87de6be79accfdbd43475919fdaa2fc8d81
 
 build:
   number: 1
