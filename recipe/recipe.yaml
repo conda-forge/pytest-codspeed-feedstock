@@ -17,7 +17,7 @@ source:
 
 build:
   number: 2
-  noarch: ${{ "python" if noarch }}
+  noarch: ${{ "python" if noarch else "" }}
   skip: (not linux and not noarch) or (noarch and not python_min)
   script:
     content:
