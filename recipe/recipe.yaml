@@ -3,7 +3,6 @@ schema_version: 1
 context:
   name: pytest-codspeed
   version: "4.2.0"
-  build: 0
 
 package:
   name: ${{ name|lower }}
