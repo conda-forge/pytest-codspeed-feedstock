@@ -16,7 +16,7 @@ source:
   sha256: 04b5d0bc5a1851ba1504d46bf9d7dbb355222a69f2cd440d54295db721b331f7
 
 build:
-  number: 1
+  number: 2
   noarch: ${{ "python" if noarch else "" }}
   skip: (not linux and not noarch) or (noarch and not python_min)
   script:
