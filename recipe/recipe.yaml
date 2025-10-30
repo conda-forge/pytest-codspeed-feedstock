@@ -16,19 +16,25 @@ source:
 build:
   number: 1
   script:
-    - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
+    - if: linux
+      then:
+        - export PYTEST_CODSPEED_FORCE_EXTENSION_BUILD=1
     - ${{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   build:
-    - ${{ compiler('c') }}
-    - ${{ stdlib('c') }}
+    - if: linux
+      then:
+        - ${{ compiler('c') }}
+        - ${{ stdlib('c') }}
   host:
     - python
     - setuptools >=61
     - pip
     - cffi >=1.17.1
-    - valgrind >=3.21
+    - if: linux
+      then:
+        - valgrind >=3.21
   run:
     - python
     - cffi >=1.17.1
@@ -42,7 +48,9 @@ tests:
       pip_check: true
       imports:
         - pytest_codspeed
-        - pytest_codspeed.instruments.hooks.dist_instrument_hooks
+        - if: linux
+          then:
+            - pytest_codspeed.instruments.hooks.dist_instrument_hooks
 
 about:
   summary: Pytest plugin to create CodSpeed benchmarks
