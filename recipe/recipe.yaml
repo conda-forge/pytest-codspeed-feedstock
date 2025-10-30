@@ -27,6 +27,7 @@ requirements:
         - python
         - cross-python_${{ target_platform }}
         - numpy
+        - cffi >=1.17.1
     - if: linux
       then:
         - ${{ compiler('c') }}
