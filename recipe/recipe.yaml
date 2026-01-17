@@ -23,7 +23,7 @@ build:
 requirements:
   build:
     - if: build_platform != target_platform
-      then: 
+      then:
         - python
         - cross-python_${{ target_platform }}
         - numpy
