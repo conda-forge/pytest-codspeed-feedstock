@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pytest-codspeed
-  version: "4.2.0"
+  version: "4.3.0"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pytest_codspeed-${{ version }}.tar.gz
-  sha256: 04b5d0bc5a1851ba1504d46bf9d7dbb355222a69f2cd440d54295db721b331f7
+  sha256: 5230d9d65f39063a313ed1820df775166227ec5c20a1122968f85653d5efee48
 
 build:
-  number: 1
+  number: 0
   script:
     - if: linux
       then:
@@ -23,7 +23,7 @@ build:
 requirements:
   build:
     - if: build_platform != target_platform
-      then: 
+      then:
         - python
         - cross-python_${{ target_platform }}
         - numpy
