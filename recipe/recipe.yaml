@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: pytest-codspeed
-  version: "4.5.0"
+  version: "5.0.1"
 
 package:
   name: ${{ name|lower }}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/${{ name[0] }}/${{ name }}/pytest_codspeed-${{ version }}.tar.gz
-  sha256: deb6ab9c9b07eba56fcb7b97206c7e48aaff697b6f73a013d8dbe4f62e76afd3
+  sha256: 4911431b843c402ee203d8bfd3244f2a6baf647aa6ad00c6a28165fd24239d62
 
 build:
   number: 0
